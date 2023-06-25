@@ -1,4 +1,4 @@
-# sap_pedido_votorantim mudando tipo da coluna vl_unit_preco_bruto de string para double
+# nome_tabela mudando tipo da coluna vl_unitario de string para double
 import boto3
 
 def make_partitions_inherit_datatypes_of_table(database_name, table_name):
@@ -41,9 +41,9 @@ def make_partitions_inherit_datatypes_of_table(database_name, table_name):
         columns = partition["StorageDescriptor"]["Columns"]
         new_columns = []
         for column in columns:
-            if column["Name"] == "vl_unitario" and column["Type"] != "string": 
+            if column["Name"] == "vl_unitario" and column["Type"] != "double": #tipo que quero
                 changed = True
-                column["Type"] = "string"
+                column["Type"] = "double" #tipo que quero
             new_columns.append(column)
         
         partition["StorageDescriptor"]["Columns"] = new_columns
@@ -69,6 +69,6 @@ def make_partitions_inherit_datatypes_of_table(database_name, table_name):
         )
 
 if _name_ == "_main_":
-    database_name = "datalake_raw"
-    table_name = "sap_prod_mills"
+    database_name = "datalake_raw"  #nome do database
+    table_name = "nome_tabela"      #nome da tabela
     make_partitions_inherit_datatypes_of_table(database_name=database_name, table_name=table_name)
