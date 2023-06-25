@@ -3,6 +3,9 @@ Esse repositório tem três tipos de código. Um para uma simples conversão de 
 
 
 Línguagem utilizada: Python
+
 principal biblioteca: Pandas
+
 AWS SDK: Boto3
+
 Interface: Jupyter Notebook 
